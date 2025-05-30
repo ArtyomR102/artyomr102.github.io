@@ -1,0 +1,248 @@
+@import url("//fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github-dark.min.css");
+
+/* Variables */
+:root {
+	/* Foregrounds */
+	--frgr-regular: white;
+	--frgr-header: lime;
+	--frgr-link: chartreuse;
+	--frgr-link-used: gray;
+	
+	/* Backgrounds */
+	--bkgr-page: url("/_resources/images/background.png") fixed top, linear-gradient(0, green, black) fixed;
+	--bkgr-main: #222;
+	--bkgr-block: #FFF1;
+	--bkgr-table-even: #FFF1;
+	--bkgr-table-odd: #FFF2;
+	
+	/* Fonts */
+	--font-regular: "Jost", sans-serif;
+	--font-cursive: "Nanum Brush Script", cursive;
+	--font-monospace: "Lucida Console", monospace;
+	
+	/* Font sizes */
+	--size-regular: large;
+	--size-header: larger;
+	--size-code: medium;
+	
+	/* Shadows */
+	--shad-main: 10px 10px 10px #0004;
+	--shad-block: 5px 5px 10px #0005;
+	--shad-tile: 2px 2px 5px #0006;
+}
+
+/* Page layout */
+* {
+	box-sizing: border-box;
+}
+
+html {
+	color: var(--frgr-regular);
+	background: var(--bkgr-regular);
+	font-family: var(--font-regular);
+	font-size: var(--size-regular);
+}
+
+body {
+	margin: 0;
+	background: var(--bkgr-page);
+}
+
+header, main, footer {
+	width: 60%;
+	min-width: 750px;
+	margin: 20px auto;
+	background: var(--bkgr-main);
+	border-radius: 20px;
+	box-shadow: var(--shad-main);
+	overflow: hidden;
+}
+
+header {
+	background: url(/_resources/images/header.png) right no-repeat, var(--bkgr-main);
+	background-size: auto 100%;
+	image-rendering: pixelated;
+}
+
+main {
+	padding: 10px;
+}
+
+@media (max-width: 800px) {
+	header, main, footer {
+		width: 100%;
+		min-width: unset;
+		margin: 0;
+		border-radius: 0;
+		box-sizing: border-box;
+	}
+}
+
+/* Page scrollbar */
+body::-webkit-scrollbar {
+	width: 10px;
+	background: linear-gradient(0, green, black);
+}
+
+body::-webkit-scrollbar-thumb {
+	background: lime;
+	border-radius: 5px;
+}
+
+/* Header */
+h1, h2, h3, h4, h5, h6 {
+	margin-top: 0;
+	margin-bottom: 10px;
+	color: var(--frgr-header);
+}
+
+h1 {
+	border-bottom: 2px dashed var(--frgr-header);
+}
+
+/* Paragraph */
+p {
+	margin: 0 0 10px;
+}
+
+/* Link */
+a {
+	color: var(--frgr-link);
+	text-decoration: none;
+	cursor: pointer;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:active {
+	color: black;
+	background: var(--frgr-link);
+}
+
+/* Block */
+.block {
+	width: 100%;
+	margin: 15px 0;
+	background: var(--bkgr-block);
+	border-radius: 10px;
+	box-shadow: var(--shad-block);
+	overflow: hidden;
+}
+
+div.block {
+	padding: 15px;
+}
+
+.block:first-child {
+	margin-top: 0;
+}
+
+.block:last-child {
+	margin-bottom: 0;
+}
+
+/* Tile */
+.tile-left {
+	width: 40%;
+	margin: 0 20px 0 0;
+	float: left;
+	box-shadow: var(--shad-tile);
+}
+
+.tile-right {
+	width: 40%;
+	margin: 0 0 0 20px;
+	float: right;
+	box-shadow: var(--shad-tile);
+}
+
+/* Image */
+main > img {
+	width: 50%;
+}
+
+img.block {
+	width: 50%;
+	margin: 10px auto;
+	padding: 0;
+}
+
+/* Table */
+table {
+	border-collapse: collapse;
+}
+
+th, td {
+	padding: 5px 10px;
+}
+
+th {
+	color: var(--frgr-header);
+	text-align: left;
+}
+
+tr:nth-child(even) {
+	background: var(--bkgr-table-even);
+}
+
+tr:nth-child(odd) {
+	background: var(--bkgr-table-odd);
+}
+
+/* Toolbar */
+.toolbar {
+	display: flex;
+	padding: 0 20px;
+	background: var(--bkgr-block);
+}
+
+.toolbar > a {
+	padding: 10px;
+	font-weight: bold;
+}
+
+.toolbar > a:hover {
+	color: black;
+	background: var(--frgr-link);
+	text-decoration: none;
+}
+
+/* Blink */
+@keyframes blink {
+	0% {
+		opacity: 100%;
+	}
+	50% {
+		opacity: 0%;
+	}
+}
+
+blink {
+	animation: blink 1s step-end infinite;
+}
+
+/* Code */
+pre {
+	margin: 0;
+	padding: 0;
+}
+
+code, pre code.hljs {
+	margin: 0;
+	padding: 10px;
+	font-family: var(--font-monospace);
+	font-size: var(--size-code);
+	font-weight: normal;
+}
+
+table.hljs-ln tr {
+	background: revert;
+}
+
+.hljs-ln td.hljs-ln-numbers {
+	padding-right: 10px;
+	text-align: right;
+}
