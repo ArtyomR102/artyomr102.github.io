@@ -10,7 +10,7 @@
 	--frgr-link-used: gray;
 	
 	/* Backgrounds */
-	--bkgr-page: url("/_resources/images/background.png") fixed top, linear-gradient(0, green, black) fixed;
+	--bkgr-page: url("/_global/layout/background.png") fixed top, linear-gradient(0, green, black) fixed;
 	--bkgr-main: #222;
 	--bkgr-block: #FFF1;
 	--bkgr-table-even: #FFF1;
@@ -60,7 +60,7 @@ header, main, footer {
 }
 
 header {
-	background: url(/_resources/images/header.png) right no-repeat, var(--bkgr-main);
+	background: url("/_global/layout/header.png") right no-repeat, linear-gradient(#0006, transparent), var(--bkgr-main);
 	background-size: auto 100%;
 	image-rendering: pixelated;
 }
@@ -120,6 +120,60 @@ a:hover {
 a:active {
 	color: black;
 	background: var(--frgr-link);
+	border-radius: 5px;
+	text-decoration: none;
+}
+
+header a, footer a {
+  color: var(--frgr-regular);
+}
+
+header a:active, footer a:active {
+  color: black;
+  background: var(--frgr-regular);
+}
+
+/* List */
+ul, ol {
+  padding: 0 0 0 20px;
+}
+
+ul + ul, ul + ol, ol + ul, ol + ol {
+  margin-top: -20px;
+}
+
+ul li, ol li{
+  margin-left: 10px;
+  list-style-position: outside;
+}
+
+ul li::marker, ol li::marker {
+  font-family: var(--font-monospace);
+}
+
+ul[type="check"] li::marker {
+  content: "v";
+}
+
+ul[type="cross"] li::marker {
+  content: "x";
+}
+
+ul[type="arrow"], ul[type="concat"] {
+  padding-left: 10px;
+  text-indent: 10px;
+}
+
+ul[type="arrow"] li::marker {
+  content: "->";
+}
+
+ul[type="concat"] li::marker {
+  content: "+=";
+}
+
+ul[type="concat"] li::first-child {
+  content: " =";
 }
 
 /* Block */
@@ -201,7 +255,10 @@ tr:nth-child(odd) {
 
 .toolbar > a {
 	padding: 10px;
+	border-width: 0;
+	border-radius: 5px;
 	font-weight: bold;
+	transition: 
 }
 
 .toolbar > a:hover {
@@ -246,3 +303,4 @@ table.hljs-ln tr {
 	padding-right: 10px;
 	text-align: right;
 }
+
