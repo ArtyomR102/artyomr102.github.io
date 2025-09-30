@@ -124,8 +124,16 @@ a:active {
 	text-decoration: none;
 }
 
-/* List */
+header a, footer a {
+  color: var(--frgr-regular);
+}
 
+header a:active, footer a:active {
+  color: black;
+  background: var(--frgr-regular);
+}
+
+/* List */
 ul, ol {
   padding: 0 0 0 20px;
 }

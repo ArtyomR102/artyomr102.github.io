@@ -1,9 +1,9 @@
 const headerFeatures = [
     function(elem) {
-        elem.innerHTML = "I can make something good. <a style='color: inherit;' href='https://youtu.be/PuMz4v5PYKc'>【=◈︿◈=】</a>" + elem.innerHTML;
+        elem.innerHTML = "I can make something good. <a href='https://youtu.be/PuMz4v5PYKc'>【=◈︿◈=】</a>" + elem.innerHTML.trim();
     },
     function(elem) {
-        elem.innerHTML = "<pre style='display: inline-block;'><code class='language-cpp' style='display: inline-block; padding: 0; background: none;'>while (true) stay(self); // &lt;3</code></pre>" + elem.innerHTML;
+        elem.innerHTML = "<span class='hljs-keyword'>while</span> (<span class='hljs-literal'>true</span>) <span class='hljs-built_in'>stay</span>(self); <span class='hljs-comment'>// &lt;3</span>" + elem.innerHTML.trim();
     },
     function(elem) {
         let blink = elem.innerHTML.trim();
@@ -17,9 +17,8 @@ const headerFeatures = [
     function(elem) {
         let rickroll = function() {
             let main = document.getElementsByTagName("main")[0];
-            main.innerHTML = "<img style='width: 100%; margin: 0;' src='/_global/features/rickroll.gif' />";
+            main.innerHTML = "<img style='width: 100%; margin: 0;' src='/_global/features/rickroll.gif' onload='this.scrollIntoView({behavior: \"smooth\", block: \"center\"})' />";
             main.style.padding = 0;
-            main.scrollIntoView();
         }
         elem.innerHTML = "[ Advertising space (<a href='#'>click for details</a>) ]" + elem.innerHTML;
         elem.firstElementChild.addEventListener("click", rickroll);
