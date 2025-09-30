@@ -1,32 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
 		<title>ArtyomR_102's little hideout!</title>
 		<meta charset="utf8" />
-		<link rel="icon" href="/_resources/favicon.ico" />
-		<link rel="stylesheet" href="/_resources/style.css" />
+		<link rel="icon" href="/_global/favicon.ico" />
+		<link rel="stylesheet" href="/_global/style.css" />
+		<script src="/_global/features.js"></script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
-		<script type="text/javascript">
-			hljs.highlightAll();
-			hljs.initLineNumbersOnLoad();
-		</script>
 	</head>
 	<body>
 		<header>
 			<div style="min-height: 100px; padding: 10px 20px;">
 				<h1 style="margin: 0; border: none; font-weight: normal;">
+
 					ArtyomR_102's hideout
+
 				</h1>
-				<pre style="margin: 0;"><code class="language-cpp" style="display: inline-block; padding: 0; background: none;">while (true) stay("cool"); // ♥</code><blink style="display: inline-block; font-family: var(--font-monospace)">_</blink></pre>
+				<p style="font-family: var(--font-monospace); font-size: var(--size-code);" id="header-feature">
+				  <blink style="display: inline-block; font-weight: bold;">_</blink>
+				</p>
 			</div>
 			<div class="toolbar">
 				<a href="/">Home</a>
-				<a href="/projects/">Projects</a>
-				<a href="/tools/">Tools</a>
-				<a href="/games/">Games</a>
-				<a href="/files/">Files</a>
-				<a href="/about-me/">About me</a>
+				<a href="/no-page/">Projects</a>
+				<a href="/no-page/">Tools</a>
+				<a href="/no-page/">Games</a>
+				<a href="/no-page/">Files</a>
+				<a href="/no-page/">About me</a>
 			</div>
 		</header>
 		<main>
@@ -35,7 +36,7 @@
 			<p>Just another homepage of another guy on the Internet! I just needed a place where I could post some things like software, game mods, etc. However, what am I talking about? This page is not indexed by search engines, so you probably came here with a purpose, right? Well, if so, here is some things I can offer.</p>
 			<h2>My projects</h2>
 			<div class="block">
-				<img class="tile-left" src="/_resources/images/tchase-mods/tile-preview.png" />
+				<img class="tile-left" src="_res/tchase-mods.png" />
 				<h3>Mods for Transfur Сhase</h3>
 				<p>Transfur Chase is a simple runner by One K, based on the Changed universe. And I made several mods & a simple loader for them!</p>
 				<a href="/tchase-mods/">Learn more...</a>
@@ -58,5 +59,11 @@ int main()
 	}
 }</code></pre>
 		</main>
+		<script type="text/javascript">
+		  placeHeaderFeature();
+			hljs.highlightAll();
+			hljs.initLineNumbersOnLoad();
+		</script>
 	</body>
 </html>
+
