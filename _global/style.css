@@ -79,6 +79,23 @@ main {
 	}
 }
 
+/* LiveInternet counter */
+header a:has(img#counter) {
+  margin: auto 0 auto auto;
+  padding: 0;
+}
+
+header img#counter {
+  display: block;
+  margin: auto;
+  mix-blend-mode: screen;
+}
+
+header a:hover img#counter {
+  filter: invert(1);
+  mix-blend-mode: multiply;
+}
+
 /* Page scrollbar */
 body::-webkit-scrollbar {
 	width: 10px;
