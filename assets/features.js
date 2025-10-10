@@ -17,7 +17,7 @@ const headerFeatures = {
     'surprise': function(elem) {
         let rickroll = function() {
             let main = document.getElementsByTagName("main")[0];
-            main.innerHTML = "<img style='width: 100%; margin: 0;' src='/_global/features/rickroll.gif' onload='this.scrollIntoView({behavior: \"smooth\", block: \"center\"})' />";
+            main.innerHTML = "<img style='width: 100%; margin: 0;' src='/assets/rickroll.gif' onload='this.scrollIntoView({behavior: \"smooth\", block: \"center\"})' />";
             main.style.padding = 0;
         }
         elem.innerHTML = "[ Advertising space (<a href='#'>click for details</a>) ]" + elem.innerHTML;
@@ -48,16 +48,14 @@ const headerFeatures = {
     },
     'animation': function(elem) {
         const FRAMES = [
-            "◟", "]◟", "͜0]", "0‿0]", "╷0‿0]◟", "[╷0‿0]◟", " [◟0‿0]", "  [◟0‿0]",
-            "   [╷0‿0]◟", "    [╷0‿0]◟", "     [◟0‿0]", "_     [◟0‿0]", "_      [╷0‿0]◟",
-            "W       [╷0‿0]◟", "WE       [◟0‿0]", "WEL_      [◟0‿0]", "WELC_      [0‿0]◟",
-            "WELCO      ,[0‿0]◟", "WELCOM     ,[°‿°]◟", "WELCOME_   ,[‒ᴗ‒]‒",
+            "◟", "]◟", "͜0]", "0ᴗ0]", "╷0ᴗ0]◟", "[╷0ᴗ0]◟", " [◟0ᴗ0]", "  [◟0ᴗ0]",
+            "   [╷0ᴗ0]◟", "    [╷0ᴗ0]◟", "     [◟0ᴗ0]", "_     [◟0ᴗ0]", "_      [╷0ᴗ0]◟",
+            "W       [╷0ᴗ0]◟", "WE       [◟0ᴗ0]", "WEL_      [◟0ᴗ0]", "WELC_      [0ᴗ0]◟",
+            "WELCO      ,[0ᴗ0]◟", "WELCOM     ,[°ᴗ°]◟", "WELCOME_   ,[‒v‒]‒",
             "WELCOME!_  ,['▾']ノ", "WELCOME!_  ,[^▾^])", "WELCOME!   ,[^▾^]ノ",
             "WELCOME!   ,[^▾^])", "WELCOME!_  ,[^▾^]ノ", "WELCOME!_  ,[^▾^])",
-            "WELCOME!   ,[^▾^]ノ", "WELCOME!   ,['▾']‒", "WELCOME!_  ,[°ᴗ°]◟",
-            "WELCOME!_  ‒[0‿0]‒", "WELCOME!   <[0‿0]>", "WELCOME!   <[0‿o]>",
-            "WELCOME!   <[0‿‒]>", "WELCOME!   <[0‿<]*", "WELCOME!   <[0‿‒]> ̽",
-            "WELCOME!   <[0‿0]>˙", "WELCOME!   <[0‿0]>"
+            "WELCOME!   ,[^▾^]ノ", "WELCOME!   ,['▾']‒", "WELCOME!_  ,[°v°]◟",
+            "WELCOME!_  ,[0ᴗ0]◟", "WELCOME!   ,[0ᴗ0]◟"
         ];
         
         let frame = 0;

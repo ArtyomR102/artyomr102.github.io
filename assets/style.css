@@ -10,7 +10,7 @@
 	--frgr-link-used: gray;
 	
 	/* Backgrounds */
-	--bkgr-page: url("/_global/layout/background.png") fixed top, linear-gradient(0, green, black) fixed;
+	--bkgr-page: url("/assets/layout/background.png") fixed top, linear-gradient(0, green, black) fixed;
 	--bkgr-main: #222;
 	--bkgr-block: #FFF1;
 	--bkgr-table-even: #FFF1;
@@ -70,7 +70,7 @@ header::before {
   content: "";
   position: absolute;
   inset: 0 0 0 0;
-  background: url("/_global/layout/header.png") right no-repeat;
+  background: url("/assets/layout/header.png") right no-repeat;
   background-size: auto 100%;
   image-rendering: pixelated;
   pointer-events: none;

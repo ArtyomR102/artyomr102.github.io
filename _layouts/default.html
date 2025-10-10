@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>ArtyomR_102's little hideout!</title>
+		<meta charset="utf8" />
+		<link rel="icon" href="/assets/favicon.ico" />
+		<link rel="stylesheet" href="/assets/style.css" />
+		<script src="/assets/features.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+	</head>
+	<body>
+		<header>
+			<div style="min-height: 100px; padding: 10px 20px;">
+				<h1 style="margin: 0; border: none; font-weight: normal;">
+					ArtyomR_102's hideout
+				</h1>
+				<p style="font-family: var(--font-monospace); font-size: var(--size-code);" id="header-feature">
+				  <blink style="display: inline-block; font-weight: bold;">_</blink>
+				</p>
+			</div>
+			<div class="toolbar">
+				<a href="/">Home</a>
+				<a href="/no-page/">Projects</a>
+				<a href="/no-page/">Tools</a>
+				<a href="/no-page/">Files</a>
+				<a href="/no-page/">About me</a>
+				<a href="//www.liveinternet.ru/click" target="_blank">
+          <img id="counter" width="88" height="31" />
+        </a>
+        <script>
+          (function(d,s){if (new URLSearchParams(window.location.search).has('noCounter'))d.getElementById("counter").parentElement.remove();else d.getElementById("counter").src="https://counter.yadro.ru/hit?t18.1;r"+escape(d.referrer)+((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+(s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+";h"+escape(d.title.substring(0,150))+";"+Math.random();})(document,screen)
+        </script>
+			</div>
+		</header>
+		{{ content }}
+		<script type="text/javascript">
+		  placeHeaderFeature();
+			hljs.highlightAll();
+			hljs.initLineNumbersOnLoad();
+		</script>
+	</body>
+</html>
+
