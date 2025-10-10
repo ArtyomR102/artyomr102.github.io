@@ -1,0 +1,10 @@
+title: "ArtyomR_102's hideout"
+description: "I can't imagine what I'd write here lol. Just another homepage on the Internet, nothing special. Come & look what I have there! ,(0 ‿<)◟"
+baseurl: ""
+url: "https://artyomr102.github.io"
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "default"
