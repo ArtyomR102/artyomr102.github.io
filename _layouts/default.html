@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>ArtyomR_102's little hideout!</title>
-		<meta charset="utf8" />
+		<title>ArtyomR_102's little hideout</title>
+		<meta charset="UTF-8" />
 		<link rel="icon" href="/assets/favicon.ico" />
-		<link rel="stylesheet" href="/assets/style.css" />
-		<script src="/assets/features.js"></script>
+		<link rel="stylesheet" href="/assets/styles/main.css" />
+		<script src="/assets/scripts/counter.js"></script>
+		<script src="/assets/scripts/features.js"></script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
 	</head>
@@ -25,20 +26,22 @@
 				<a href="/no-page/">Tools</a>
 				<a href="/no-page/">Files</a>
 				<a href="/no-page/">About me</a>
-				<a href="//www.liveinternet.ru/click" target="_blank">
-          <img id="counter" width="88" height="31" />
-        </a>
-        <script>
-          (function(d,s){if (new URLSearchParams(window.location.search).has('noCounter'))d.getElementById("counter").parentElement.remove();else d.getElementById("counter").src="https://counter.yadro.ru/hit?t18.1;r"+escape(d.referrer)+((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+(s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+";h"+escape(d.title.substring(0,150))+";"+Math.random();})(document,screen)
-        </script>
 			</div>
 		</header>
 		{{ content }}
-		<script type="text/javascript">
-		  placeHeaderFeature();
-			hljs.highlightAll();
-			hljs.initLineNumbersOnLoad();
-		</script>
 	</body>
+	<footer>
+	  &copy; {{ site.time | date: "%Y" }} Romanov Artyom; This website uses <a href="/info/cookies">cookies</a>
+	  and <a href="/info/counter">LiveInternet counter</a>.
+	  <a href="//www.liveinternet.ru/click" target="_blank">
+      <img id="counter" width="88" height="31" />
+    </a>
+	</footer>
+	<script type="text/javascript">
+    initCounter();
+    placeHeaderFeature();
+    hljs.highlightAll();
+    hljs.initLineNumbersOnLoad();
+	</script>
 </html>
 
