@@ -1,11 +1,11 @@
-const headerFeatures = [
-    function(elem) {
+const headerFeatures = {
+    'nurture': function(elem) {
         elem.innerHTML = "I can make something good. <a href='https://youtu.be/PuMz4v5PYKc'>【=◈︿◈=】</a>" + elem.innerHTML.trim();
     },
-    function(elem) {
+    'code': function(elem) {
         elem.innerHTML = "<span class='hljs-keyword'>while</span> (<span class='hljs-literal'>true</span>) <span class='hljs-built_in'>stay</span>(self); <span class='hljs-comment'>// &lt;3</span>" + elem.innerHTML.trim();
     },
-    function(elem) {
+    'clock': function(elem) {
         let blink = elem.innerHTML.trim();
         let updateTime = function(elem) {
             let str = (new Date()).toLocaleString();
@@ -14,7 +14,7 @@ const headerFeatures = [
         updateTime(elem);
         setInterval(() => updateTime(elem), 1000);
     },
-    function(elem) {
+    'surprise': function(elem) {
         let rickroll = function() {
             let main = document.getElementsByTagName("main")[0];
             main.innerHTML = "<img style='width: 100%; margin: 0;' src='/_global/features/rickroll.gif' onload='this.scrollIntoView({behavior: \"smooth\", block: \"center\"})' />";
@@ -23,7 +23,7 @@ const headerFeatures = [
         elem.innerHTML = "[ Advertising space (<a href='#'>click for details</a>) ]" + elem.innerHTML;
         elem.firstElementChild.addEventListener("click", rickroll);
     },
-    function(elem) {
+    'deanon': function(elem) {
         let blink = elem.innerHTML.trim();
         elem.innerHTML = "Fetching..." + blink;
         let promise = fetch("//ipinfo.io/json")
@@ -46,7 +46,7 @@ const headerFeatures = [
                 elem.innerHTML = "Error: " + error.message + blink;
             });
     },
-    function(elem) {
+    'animation': function(elem) {
         const FRAMES = [
             "◟", "]◟", "͜0]", "0‿0]", "╷0‿0]◟", "[╷0‿0]◟", " [◟0‿0]", "  [◟0‿0]",
             "   [╷0‿0]◟", "    [╷0‿0]◟", "     [◟0‿0]", "_     [◟0‿0]", "_      [╷0‿0]◟",
@@ -59,6 +59,7 @@ const headerFeatures = [
             "WELCOME!   <[0‿‒]>", "WELCOME!   <[0‿<]*", "WELCOME!   <[0‿‒]> ̽",
             "WELCOME!   <[0‿0]>˙", "WELCOME!   <[0‿0]>"
         ];
+        
         let frame = 0;
         let blink = elem.innerHTML.trim();
         elem.innerHTML = "<pre style='display: inline-block; line-height: 1.2; font-family: var(--font-monospace);' />";
@@ -73,12 +74,19 @@ const headerFeatures = [
             }
         }, 150);
     }
-];
+};
 
 function placeHeaderFeature()
 {
     let elem = document.getElementById('header-feature');
-    let idx = Math.floor(Math.random() * headerFeatures.length);
-    headerFeatures[idx](elem);
+    let key = new URLSearchParams(window.location.search).get('headerFeature');
+    
+    if (key == null || !headerFeatures.hasOwnProperty(key))
+    {
+        let keys = Object.keys(headerFeatures);
+        key = keys[Math.floor(Math.random() * keys.length)];
+    }
+    
+    headerFeatures[key](elem);
 }
 

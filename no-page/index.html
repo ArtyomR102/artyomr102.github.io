@@ -25,7 +25,7 @@
           <img id="counter" width="88" height="31" />
         </a>
         <script>
-          (function(d,s){d.getElementById("counter").src="https://counter.yadro.ru/hit?t18.1;r"+escape(d.referrer)+((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+(s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)
+          (function(d,s,w){if (new URLSearchParams(w.location.search).has('noCounter'))d.getElementById("counter").parentElement.remove();else d.getElementById("counter").src="https://counter.yadro.ru/hit?t18.1;r"+escape(d.referrer)+((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+(s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+";h"+escape(d.title.substring(0,150))+";"+Math.random();})(document,screen,window)
         </script>
 			</div>
 		</header>
