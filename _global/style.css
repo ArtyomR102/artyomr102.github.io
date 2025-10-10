@@ -30,6 +30,7 @@
 	--shad-main: 10px 10px 10px #0004;
 	--shad-block: 5px 5px 10px #0005;
 	--shad-tile: 2px 2px 5px #0006;
+	--shad-hilight: 0 0 0 3px var(--frgr-link) inset;
 }
 
 /* Page layout */
@@ -60,9 +61,19 @@ header, main, footer {
 }
 
 header {
-	background: url("/_global/layout/header.png") right no-repeat, linear-gradient(#0006, transparent), var(--bkgr-main);
+  position: relative;
+	background: linear-gradient(#0006, transparent), var(--bkgr-main);
 	background-size: auto 100%;
-	image-rendering: pixelated;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 0 0;
+  background: url("/_global/layout/header.png") right no-repeat;
+  background-size: auto 100%;
+  image-rendering: pixelated;
+  pointer-events: none;
 }
 
 main {
@@ -272,16 +283,17 @@ tr:nth-child(odd) {
 
 .toolbar > a {
 	padding: 10px;
-	border-width: 0;
-	border-radius: 5px;
+  border-radius: 5px;
 	font-weight: bold;
-	transition: 
+	transition: box-shadow linear 0.5s;
 }
 
 .toolbar > a:hover {
 	color: black;
 	background: var(--frgr-link);
+	box-shadow: var(--shad-hilight);
 	text-decoration: none;
+	transition: none;
 }
 
 /* Blink */
