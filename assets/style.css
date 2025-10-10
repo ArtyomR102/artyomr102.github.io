@@ -283,7 +283,6 @@ tr:nth-child(odd) {
 
 .toolbar > a {
 	padding: 10px;
-  border-radius: 5px;
 	font-weight: bold;
 	transition: box-shadow linear 0.5s;
 }
