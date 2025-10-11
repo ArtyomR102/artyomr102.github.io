@@ -10,7 +10,7 @@
 	--frgr-link-used: gray;
 	
 	/* Backgrounds */
-	--bkgr-page: url("/assets/layout/background.png") fixed top, linear-gradient(0, green, black) fixed;
+	--bkgr-page: url("/assets/images/layout/background.png") fixed top, linear-gradient(0, green, black) fixed;
 	--bkgr-main: #222;
 	--bkgr-block: #FFF1;
 	--bkgr-table-even: #FFF1;
@@ -38,16 +38,13 @@
 	box-sizing: border-box;
 }
 
-html {
+html, body {
+  height: 100%;
+  margin: 0;
 	color: var(--frgr-regular);
-	background: var(--bkgr-regular);
+	background: var(--bkgr-page);
 	font-family: var(--font-regular);
 	font-size: var(--size-regular);
-}
-
-body {
-	margin: 0;
-	background: var(--bkgr-page);
 }
 
 header, main, footer {
@@ -70,7 +67,7 @@ header::before {
   content: "";
   position: absolute;
   inset: 0 0 0 0;
-  background: url("/assets/layout/header.png") right no-repeat;
+  background: url("/assets/images/layout/header.png") right no-repeat;
   background-size: auto 100%;
   image-rendering: pixelated;
   pointer-events: none;
@@ -78,6 +75,11 @@ header::before {
 
 main {
 	padding: 10px;
+}
+
+footer {
+  margin: auto auto 0;
+  border-radius: 0 0 20px 20px;
 }
 
 @media (max-width: 800px) {
