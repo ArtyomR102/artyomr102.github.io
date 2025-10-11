@@ -17,10 +17,10 @@ const headerFeatures = {
     'surprise': function(elem) {
         let rickroll = function() {
             let main = document.getElementsByTagName("main")[0];
-            main.innerHTML = "<img style='width: 100%; margin: 0;' src='/assets/rickroll.gif' onload='this.scrollIntoView({behavior: \"smooth\", block: \"center\"})' />";
+            main.innerHTML = "<img style='width: 100%; margin: 0;' src='/assets/images/rickroll.gif' onload='this.scrollIntoView({behavior: \"smooth\", block: \"center\"})' />";
             main.style.padding = 0;
         }
-        elem.innerHTML = "[ Advertising space (<a href='#'>click for details</a>) ]" + elem.innerHTML;
+        elem.innerHTML = "[ Advertising space (<a href='#'>click for details</a>) ]" + elem.innerHTML.trim();
         elem.firstElementChild.addEventListener("click", rickroll);
     },
     'deanon': function(elem) {

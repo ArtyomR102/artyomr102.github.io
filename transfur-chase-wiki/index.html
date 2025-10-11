@@ -1,9 +1,17 @@
 ---
-layout: default
-title: It was me lol
+layout: modal-box
+title: Redirecting...
 ---
 
-<main style="padding: 0; overflow: hidden;">
-  <img style="margin: 0; width: 100%;" src="its-me.png">
-</main>
+<h1>You're about to be redirected</h1>
+<img src="//www.google.com/s2/favicons?domain=transfur-chase.fandom.com/ru&sz=128">
+<p>Transfur Chase wiki</p>
+<div class="redir-anim"></div>
+<a id="redir-cancel" class="button">Cancel</a>
+<a id="redir-link" class="button" href="//transfur-chase.fandom.com/ru">Redirect</a>
+<script type="text/javascript">
+  setInterval(function() {
+    window.location.href = '//transfur-chase.fandom.com/ru';
+  }, 3.0);
+</script>
 
