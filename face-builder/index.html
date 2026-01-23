@@ -1,0 +1,47 @@
+---
+layout: default
+title: Unicode emoji generator ALPHA
+---
+
+<main class="face-builder">
+  <link rel="stylesheet" href="/assets/styles/face-builder.css">
+  <h1>Unicode emoji generator <mark>ALPHA</mark></h1>
+  This is an alpha-version! Not usable yet, only combining symbols work<br>
+  First click on a symbol, then check checkboxes below<br>
+  You can also type <code>FaceBuilder.setBaseChar(index);</code> in F12 console (indexes start from 0)<br>
+  P.S. Hello, One K <code>(&gt;‿0)</code>
+  <div class="fb-face">
+       <span id="left-arm"></span><!--
+    --><span id="left-rim"></span><!--
+    --><span id="left-dec"></span><!--
+    --><span id="left-eye"></span><!--
+    --><span id="mouth"></span><!--
+    --><span id="right-eye"></span><!--
+    --><span id="right-dec"></span><!--
+    --><span id="right-rim"></span><!--
+    --><span id="right-arm"></span>
+  </div>
+  <div class="fb-palette">
+    <div id="above-diac-list"></div>
+    <div id="base-char-list"></div>
+    <div id="below-diac-list"></div>
+  </div>
+  <div class="fb-settings">
+    <input type="checkbox" id="mirror-mode-chk" checked onclick="FaceBuilder.mirrorMode = !FaceBuilder.mirrorMode;"></input>
+    <label for="mirror-mode-chk" onclick="FaceBuilder.mirrorMode = !FaceBuilder.mirrorMode;">Mirror mode</label><br>
+    <label for="font-family-sel">Font family</label><br>
+    <select id="font-family-sel">
+      <!--<option value="0">Source Code Pro-Teus</option>-->
+      <option value="1">Source Code Pro</option>
+      <option value="2">FiraCode</option>
+      <option value="3">Noto Sans</option>
+      <option value="4">Arial Unicode MS</option>
+      <option value="5">Times New Roman</option>
+    </select><br>
+    <label for="font-size-sel">Font size</label><br>
+    <input type="range" id="font-size-sel" min="1" max="100"></input><br>
+    <button id="copy-result-btn">Copy result</button>
+  </div>
+  <script src="/assets/scripts/face-builder.js"></script>
+</main>
+
