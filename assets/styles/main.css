@@ -42,8 +42,8 @@
 }
 
 html, body {
-  height: 100%;
-  margin: 0;
+	height: 100%;
+	margin: 0;
 	color: var(--frgr-regular);
 	background: var(--bkgr-page);
 	font-family: var(--font-regular);
@@ -61,19 +61,19 @@ header, main, footer {
 }
 
 header {
-  position: relative;
+	position: relative;
 	background: linear-gradient(#0006, transparent), var(--bkgr-main);
 	background-size: auto 100%;
 }
 
 header::before {
-  content: "";
-  position: absolute;
-  inset: 0 0 0 0;
-  background: url("/assets/images/layout/header.png") right no-repeat;
-  background-size: auto 100%;
-  image-rendering: pixelated;
-  pointer-events: none;
+	content: "";
+	position: absolute;
+	inset: 0 0 0 0;
+	background: url("/assets/images/layout/header.png") right no-repeat;
+	background-size: auto 100%;
+	image-rendering: pixelated;
+	pointer-events: none;
 }
 
 main {
@@ -81,9 +81,9 @@ main {
 }
 
 footer {
-  margin: auto auto 0;
-  padding: 10px 20px;
-  border-radius: 20px 20px 0 0;
+	margin: auto auto 0;
+	padding: 10px 20px;
+	border-radius: 20px 20px 0 0;
 }
 
 @media (max-width: 800px) {
@@ -98,13 +98,13 @@ footer {
 
 /* LiveInternet counter */
 a:has(img#counter) {
-  float: right;
-  transition: box-shadow linear 0.5s;
+	float: right;
+	transition: box-shadow linear 0.5s;
 }
 
 a img#counter {
-  display: block;
-  mix-blend-mode: screen;
+	display: block;
+	mix-blend-mode: screen;
 }
 
 a:has(img#counter):hover {
@@ -114,8 +114,8 @@ a:has(img#counter):hover {
 }
 
 a:hover img#counter {
-  filter: invert(1);
-  mix-blend-mode: multiply;
+	filter: invert(1);
+	mix-blend-mode: multiply;
 }
 
 /* Page scrollbar */
@@ -147,10 +147,10 @@ p {
 
 /* Highlight */
 mark {
-  padding: 0 5px;
-  color: black;
-  background: var(--frgr-header);
-  border-radius: 5px;
+	padding: 0 5px;
+	color: black;
+	background: var(--frgr-header);
+	border-radius: 5px;
 }
 
 /* Link */
@@ -172,55 +172,55 @@ a:active {
 }
 
 header a, footer a {
-  color: var(--frgr-regular);
+	color: var(--frgr-regular);
 }
 
 header a:active, footer a:active {
-  color: black;
-  background: var(--frgr-regular);
+	color: black;
+	background: var(--frgr-regular);
 }
 
 /* List */
 ul, ol {
-  padding: 0 0 0 20px;
+	padding: 0 0 0 20px;
 }
 
 ul + ul, ul + ol, ol + ul, ol + ol {
-  margin-top: -20px;
+	margin-top: -20px;
 }
 
 ul li, ol li{
-  margin-left: 10px;
-  list-style-position: outside;
+	margin-left: 10px;
+	list-style-position: outside;
 }
 
 ul li::marker, ol li::marker {
-  font-family: var(--font-monospace);
+	font-family: var(--font-monospace);
 }
 
 ul[type="check"] li::marker {
-  content: "v";
+	content: "v";
 }
 
 ul[type="cross"] li::marker {
-  content: "x";
+	content: "x";
 }
 
 ul[type="arrow"], ul[type="concat"] {
-  padding-left: 10px;
-  text-indent: 10px;
+	padding-left: 10px;
+	text-indent: 10px;
 }
 
 ul[type="arrow"] li::marker {
-  content: "->";
+	content: "->";
 }
 
 ul[type="concat"] li::marker {
-  content: "+=";
+	content: "+=";
 }
 
 ul[type="concat"] li::first-child::marker {
-  content: " =";
+	content: " =";
 }
 
 /* Block */
@@ -302,7 +302,7 @@ tr:nth-child(odd) {
 
 .toolbar > a {
 	padding: 10px;
-  border-radius: 5px;
+	border-radius: 5px;
 	font-weight: bold;
 	transition: box-shadow linear 0.5s;
 }

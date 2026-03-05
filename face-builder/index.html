@@ -6,12 +6,20 @@ title: Unicode emoji generator ALPHA
 <main class="face-builder">
   <link rel="stylesheet" href="/assets/styles/face-builder.css">
   <h1>Unicode emoji generator <mark>ALPHA</mark></h1>
-  This is an alpha-version! Not usable yet, only combining symbols work<br>
-  First click on a symbol, then check checkboxes below<br>
-  You can also type <code>FaceBuilder.setBaseChar(index);</code> in F12 console (indexes start from 0)<br>
-  P.S. Hello, One K <code>(&gt;‿0)</code>
-  <div class="fb-face">
-       <span id="left-arm"></span><!--
+  <p>This is an alpha-version! Quite usable, but buggy and ugly</p>
+  <ol>
+    <li>Click on a symbol or empty space to select it</li>
+    <li>Round buttons select different base symbols</li>
+    <li>Checkboxes select combining symbols above and below the base symbol</li>
+    <li>Mirror mode makes symbols appear mirrored (thx CO)</li>
+    <li>Strict mode makes font-unsupported symbols disappear (doesn't work yet tho)</li>
+  </ol>
+  <p>
+    <mark>NOTE</mark>
+    Font family and size affect preview only! Should be obvious, but needs to be said for a certain kind of people. And you guessed, doesn't work yet <code>(0∇0)</code>
+  </p>
+  <div class="fb-face"><!--
+    --><span id="left-arm"></span><!--
     --><span id="left-rim"></span><!--
     --><span id="left-dec"></span><!--
     --><span id="left-eye"></span><!--
@@ -19,8 +27,8 @@ title: Unicode emoji generator ALPHA
     --><span id="right-eye"></span><!--
     --><span id="right-dec"></span><!--
     --><span id="right-rim"></span><!--
-    --><span id="right-arm"></span>
-  </div>
+    --><span id="right-arm"></span><!--
+--></div>
   <div class="fb-palette">
     <div id="above-diac-list"></div>
     <div id="base-char-list"></div>
@@ -31,7 +39,7 @@ title: Unicode emoji generator ALPHA
     <label for="mirror-mode-chk" onclick="FaceBuilder.mirrorMode = !FaceBuilder.mirrorMode;">Mirror mode</label><br>
     <label for="font-family-sel">Font family</label><br>
     <select id="font-family-sel">
-      <!--<option value="0">Source Code Pro-Teus</option>-->
+      <option value="0">Source Code Pro-Teus</option>
       <option value="1">Source Code Pro</option>
       <option value="2">FiraCode</option>
       <option value="3">Noto Sans</option>

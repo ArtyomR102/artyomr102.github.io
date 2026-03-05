@@ -1,8 +1,13 @@
 const FaceBuilder = {
-    selTile: -1,
-    mirrorMode: true,
+    _selTile: -1,
+    _aboveDiacElem: null,
+    _baseCharElem: null,
+    _belowDiacElem: null,
 
-    faceData: [{
+    mirrorMode: true,
+    strictMode: false,
+
+    _faceData: [{
             "elem": "left-arm",
             "char": "╭–𝀅<~ㇸ",
             "diac": false
@@ -51,7 +56,7 @@ const FaceBuilder = {
     ],
 
     _init: function() {
-        for (const [idx, tile] of this.faceData.entries()) {
+        for (const [idx, tile] of this._faceData.entries()) {
             tile.elem = document.getElementById(tile.elem);
             tile.elem.addEventListener("click", this.selectTile.bind(this, idx));
         }
@@ -62,6 +67,7 @@ const FaceBuilder = {
             for (let idx = 0; idx < this.diacList[type].length; idx++) {
                 let check = document.createElement("input");
                 check.type = "checkbox";
+                check.disabled = true;
                 //check.textContent = "\u25CC" + list[idx];
                 check.addEventListener("click", this.toggleDiac.bind(this, type, idx, check));
                 list.appendChild(check);
@@ -75,22 +81,49 @@ const FaceBuilder = {
             this.mirrorDiacs[type] = {...this.mirrorDiacs[type], ...reverseMirror};
         }
 
+        this._aboveDiacElem = document.getElementById("above-diac-list");
+        this._baseCharElem = document.getElementById("base-char-list");
+        this._belowDiacElem = document.getElementById("below-diac-list");
+
         [-1, 1, -1, 3, 4, 3, -1, 1, -1].forEach((char, tile) => {
-            this.selTile = tile;
+            this._selTile = tile;
             this.setBaseChar(char);
         });
-        this.selTile = -1;
+        this._selTile = -1;
+
+        document.getElementById("copy-result-btn")
+        .addEventListener("click", this.copyResult.bind(this));
     },
 
     _getTiles: function() {
-        let list = [this.faceData[this.selTile]];
-        if (this.mirrorMode && this.selTile != 4)
-            list.push(this.faceData[8 - this.selTile]);
+        let list = [this._faceData[this._selTile]];
+        if (this.mirrorMode && this._selTile != 4)
+            list.push(this._faceData[8 - this._selTile]);
         return list;
     },
 
+    _rebuildCtrls: function() {
+        [...this._aboveDiacElem.childNodes, ...this._belowDiacElem.childNodes]
+        .forEach(check => {
+            check.disabled = !this._faceData[this._selTile].diac;
+        });
+        
+        this._baseCharElem.innerHTML = "";
+        for (let idx = 0; idx < this._faceData[this._selTile].char.length; idx++) {
+            let radio = document.createElement("input");
+            radio.type = "radio";
+            radio.name = "base-char";
+            //radio.textContent = "\u25CC" + list[idx];
+            radio.addEventListener("click", this.setBaseChar.bind(this, idx));
+            this._baseCharElem.appendChild(radio);
+        }
+    },
+
     selectTile: function(tile) {
-        this.selTile = tile;
+        this._faceData[tile].elem.classList.add("selected");
+        this._faceData[Math.max(this._selTile, 0)].elem.classList.remove("selected");
+        this._selTile = tile;
+        this._rebuildCtrls();
     },
 
     setBaseChar: function(idx) {
@@ -117,7 +150,13 @@ const FaceBuilder = {
 
     toggleDiac: function(type, idx, check) {
         (check.checked ? this.addDiac : this.removeDiac).call(this, type, idx);
+    },
+
+    copyResult: function() {
+        let face = document.getElementsByClassName("fb-face")[0];
+        navigator.clipboard.writeText(face.textContent);
     }
 }
 
 FaceBuilder._init();
+
