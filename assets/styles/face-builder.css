@@ -1,82 +1,89 @@
 /* Variables */
 
 :root {
-    /* Foregrounds */
-    --frgr-face: chartreuse;
-    --frgr-face-sel: white;
+	/* Foregrounds */
+	--frgr-face: chartreuse;
+	--frgr-face-sel: white;
 
-    /* Backgrounds */
-    --bkgr-face-sel: linear-gradient(0, #7fff007f, transparent);
+	/* Backgrounds */
+	--bkgr-face-sel: linear-gradient(0, #7fff007f, transparent);
 
-    /* Shadows */
-    --shad-face: 0;
+	/* Shadows */
+	--shad-face: 0;
 }
 
 /* Face builder - Face viewport */
+
 main.face-builder div.fb-face {
-    display: flex;
-    justify-content: center;
-    align-items: stretch;
-    margin: 10px auto;
-    width: 80%;
-    color: var(--frgr-face);
-    background: var(--bkgr-page);
-    line-height: 200%;
-    font-family: "Source Code Pro";
-    font-size: 100px;
-    border-radius: 5px;
-    overflow: hidden;
-    box-shadow: var(--shad-main) inset;
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    
+	display: flex;
+	justify-content: center;
+	align-items: stretch;
+	margin: 10px auto;
+	width: 80%;
+	color: var(--frgr-face);
+	background: var(--bkgr-page);
+	line-height: 200%;
+	font-family: "Source Code Pro";
+	font-size: 100px;
+	border-radius: 5px;
+	overflow: hidden;
+	box-shadow: var(--shad-main) inset;
+	user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	
 }
 
 main.face-builder div.fb-face span {
-    cursor: cell;
-    transition: padding .1s;
+	cursor: cell;
+	transition: padding .1s;
 }
 
 main.face-builder div.fb-face:hover span {
-    padding: 0 3px;
+	padding: 0 3px;
 }
 
 main.face-builder div.fb-face span:empty::before {
-    opacity: 20%;
-    font-size: 0;
-    content: "·";
-    transition: font-size .1s;
+	display: block;
+	opacity: 20%;
+	font-size: 0;
+	content: "·";
+	transition: font-size .1s;
 }
 
 main.face-builder div.fb-face:hover span:empty::before,
 main.face-builder div.fb-face span:empty.selected::before {
-    font-size: revert;
+	font-size: 50px;
 }
 
 main.face-builder div.fb-face span:first-child {
-    flex-grow: 1;
-    text-align: right;
+	flex-grow: 1;
+	text-align: right;
 }
 
 main.face-builder div.fb-face span:last-child {
-    flex-grow: 1;
-    text-align: left;
+	flex-grow: 1;
+	text-align: left;
 }
 
 main.face-builder div.fb-face span:hover {
-    color: var(--frgr-face-sel);
-    background: var(--bkgr-face-sel);
+	background: var(--bkgr-face-sel);
+}
+
+main.face-builder div.fb-face span:hover,
+main.face-builder div.fb-face span.selected {
+	color: var(--frgr-face-sel);
 }
 
 main.face-builder div.fb-face span:hover::before {
-    opacity: 100%;
+	opacity: 100%;
 }
 
 @media (max-width: 800px) {
 	main.face-builder div.fb-face {
-        width: auto;
-        margin: 10px;
-    }
+		width: auto;
+		margin: 10px;
+	}
 }
+
