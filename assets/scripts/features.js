@@ -92,7 +92,39 @@ const HeaderFeature = {
 const SideFeatures = {
 	features: {
 		rm: function(elem) {
-			elem.innerHTML = "$ sudo rm -rf --no-preserve-root<blink>_</blink>";
+			elem.innerHTML = '<code style="">$ sudo rm -rf --no-preserve-root<blink>_</blink></code>';
+		},
+		clock: function(elem) {
+			elem.innerHTML = `
+				<svg width="120" height="120" viewBox="0 0 120 120">
+					<style>
+						* {
+							stroke-width: 5;
+							stroke: #007f00;
+							stroke-linecap: square;
+							fill: none;
+							overflow: visible;
+						}
+					</style>
+					<polygon points="120,60 112,90 90,112 60,120 30,112 8,90 0,60 8,30 30,8 60,0 90,8 112,30" />
+					<polyline id="clock-hands" />
+				</svg>
+			`;
+			let hands = document.getElementById('clock-hands');
+
+			let update = function(elem) {
+				let date = new Date();
+				let hx = Math.round(60 + 30 * Math.sin((date.getHours() + date.getMinutes() / 60.0) * Math.PI / 6));
+				let hy = Math.round(60 - 30 * Math.cos((date.getHours() + date.getMinutes() / 60.0) * Math.PI / 6));
+				let my = Math.round(60 - 45 * Math.cos(date.getMinutes() * Math.PI / 30));
+				let mx = Math.round(60 + 45 * Math.sin(date.getMinutes() * Math.PI / 30));
+				elem.setAttribute('points', `${hx},${hy} 60,60 ${mx},${my}`);
+			}
+			update(hands);
+			setTimeout(function() {
+				update(hands);
+				setInterval(update, 60000, hands);
+			}, (60 - (new Date).getSeconds()) * 1000, hands);
 		},
         nginx: function(elem) {
 			elem.innerHTML = `

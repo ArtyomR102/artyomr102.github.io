@@ -41,12 +41,17 @@
 }
 
 html, body {
-	height: 100%;
 	margin: 0;
 	color: var(--frgr-regular);
 	background: var(--bkgr-page);
 	font-family: var(--font-regular);
 	font-size: var(--size-regular);
+	overflow: hidden;
+}
+
+html {
+	height: 100%;
+	overflow-y: scroll;
 }
 
 header, main, footer {

@@ -22,19 +22,19 @@
 			</div>
 			<div class="toolbar">
 				<a href="/">Home</a>
-				<a href="/projects/">Projects</a>
-				<a href="/tools/">Tools</a>
-				<a href="/files/">Files</a>
-				<a href="/about-me/">About me</a>
+				<a href="/projects">Projects</a>
+				<a href="/tools">Tools</a>
+				<a href="/files">Files</a>
+				<a href="/about/me">About me</a>
 			</div>
 		</header>
-		<main>
+		<main class="{{ main-class }}">
 			{{ content }}
 			<aside id="left-side-features"></aside>
 			<aside id="right-side-features"></aside>
 		</main>
 		<footer>
-			&copy; {{ site.time | date: "%Y" }} Romanov Artyom; <a href="/privacy-policy">Privacy policy</a>
+			&copy; {{ site.time | date: "%Y" }} Romanov Artyom; <a href="/about/privacy">Privacy policy</a>
 			<a href="//www.liveinternet.ru/click" target="_blank">
 				<img id="counter" width="88" height="31" />
 			</a>
