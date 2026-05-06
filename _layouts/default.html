@@ -22,23 +22,27 @@
 			</div>
 			<div class="toolbar">
 				<a href="/">Home</a>
-				<a href="/no-page/">Projects</a>
-				<a href="/no-page/">Tools</a>
-				<a href="/no-page/">Files</a>
-				<a href="/no-page/">About me</a>
+				<a href="/projects/">Projects</a>
+				<a href="/tools/">Tools</a>
+				<a href="/files/">Files</a>
+				<a href="/about-me/">About me</a>
 			</div>
 		</header>
-		{{ content }}
+		<main>
+			{{ content }}
+			<aside id="left-side-features"></aside>
+			<aside id="right-side-features"></aside>
+		</main>
+		<footer>
+			&copy; {{ site.time | date: "%Y" }} Romanov Artyom; <a href="/privacy-policy">Privacy policy</a>
+			<a href="//www.liveinternet.ru/click" target="_blank">
+				<img id="counter" width="88" height="31" />
+			</a>
+		</footer>
 	</body>
-	<footer>
-	  <a href="//www.liveinternet.ru/click" target="_blank">
-      <img id="counter" width="88" height="31" />
-    </a>
-	  &copy; {{ site.time | date: "%Y" }} Romanov Artyom; <a href="/privacy-policy">Privacy policy</a>
-	</footer>
 	<script type="text/javascript">
     initCounter();
-    placeHeaderFeature();
+    placeAllFeatures();
     hljs.highlightAll();
     hljs.initLineNumbersOnLoad();
 	</script>
