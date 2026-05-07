@@ -50,9 +50,9 @@ const HeaderFeature = {
 		animation: function(elem) {
 			const FRAMES = [
 				"◟", "]◟", "͜0]", "0ᴗ0]", "╷0ᴗ0]◟", "[╷0ᴗ0]◟", " [◟0ᴗ0]", "  [◟0ᴗ0]",
-				"   [╷0ᴗ0]◟", "	[╷0ᴗ0]◟", "	 [◟0ᴗ0]", "_	 [◟0ᴗ0]", "_	  [╷0ᴗ0]◟",
-				"W	   [╷0ᴗ0]◟", "WE	   [◟0ᴗ0]", "WEL_	  [◟0ᴗ0]", "WELC_	  [0ᴗ0]◟",
-				"WELCO	  ,[0ᴗ0]◟", "WELCOM	 ,[°ᴗ°]◟", "WELCOME_   ,[‒v‒]‒",
+				"   [╷0ᴗ0]◟", "    [╷0ᴗ0]◟", "     [◟0ᴗ0]", "_     [◟0ᴗ0]", "_      [╷0ᴗ0]◟",
+				"W       [╷0ᴗ0]◟", "WE       [◟0ᴗ0]", "WEL_      [◟0ᴗ0]", "WELC_      [0ᴗ0]◟",
+				"WELCO      ,[0ᴗ0]◟", "WELCOM     ,[°ᴗ°]◟", "WELCOME_   ,[‒v‒]‒",
 				"WELCOME!_  ,['▾']ノ", "WELCOME!_  ,[^▾^])", "WELCOME!   ,[^▾^]ノ",
 				"WELCOME!   ,[^▾^])", "WELCOME!_  ,[^▾^]ノ", "WELCOME!_  ,[^▾^])",
 				"WELCOME!   ,[^▾^]ノ", "WELCOME!   ,['▾']‒", "WELCOME!_  ,[°v°]◟",
@@ -126,13 +126,13 @@ const SideFeatures = {
 				setInterval(update, 60000, hands);
 			}, (60 - (new Date).getSeconds()) * 1000, hands);
 		},
-        nginx: function(elem) {
+		nginx: function(elem) {
 			elem.innerHTML = `
-                <center>
-                    <h3>500 Internal Server Error</h3>
-                    <hr>
-                    nginx
-                </center>`;
+				<center>
+					<h3>500 Internal Server Error</h3>
+					<hr>
+					nginx
+				</center>`;
 		},
 		scam: function(elem) {
 			elem.innerHTML = "<br><br><br><br><br><a>Click here!</a>";
@@ -158,24 +158,24 @@ const SideFeatures = {
 		},
 		glitch: function(elem) {
 			let canvas = document.createElement('canvas');
-            canvas.width = 180;
-            canvas.height = 130;
-            canvas.style.cursor = 'progress';
-            canvas.onclick = function() {
-                window.location.href = "/" + Math.floor(Math.random() * Number.MAX_SAFE_INTEGER).toString(16);
-            }
-            elem.appendChild(canvas);
+			canvas.width = 180;
+			canvas.height = 130;
+			canvas.style.cursor = 'progress';
+			canvas.onclick = function() {
+				window.location.href = "/" + Math.floor(Math.random() * Number.MAX_SAFE_INTEGER).toString(16);
+			}
+			elem.appendChild(canvas);
 
-            let ctx = canvas.getContext('2d');
-            ctx.fillStyle = 'green';
-            let frames = Math.random() * 30 + 15
-            for (let f = 0; f < frames; f++) {
-                let x = Math.random() * 180;
-                let y = Math.random() * 130;
-                let w = Math.random() * (180 - x);
-                let h = Math.random() * (130 - y);
-                ctx[f % 2 ? 'clearRect' : 'fillRect'](x, y, w, h);
-            }
+			let ctx = canvas.getContext('2d');
+			ctx.fillStyle = 'green';
+			let frames = Math.random() * 30 + 15
+			for (let f = 0; f < frames; f++) {
+				let x = Math.random() * 180;
+				let y = Math.random() * 130;
+				let w = Math.random() * (180 - x);
+				let h = Math.random() * (130 - y);
+				ctx[f % 2 ? 'clearRect' : 'fillRect'](x, y, w, h);
+			}
 		}
 	},
 
