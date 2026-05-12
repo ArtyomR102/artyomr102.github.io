@@ -78,6 +78,7 @@ const HeaderFeature = {
 		}
 		
 		this.features[key](elem);
+		this.current = key;
 	}
 };
 
@@ -149,9 +150,9 @@ const SideFeatures = {
 			`)
 		},
 		glitch: function(elem) {
-			let canvas = document.createElement('canvas');
-			canvas.width = 180;
-			canvas.height = 130;
+			const canvas = document.createElement('canvas');
+			const cw = canvas.width = 150;
+			const ch = canvas.height = 120;
 			canvas.style.cursor = 'progress';
 			canvas.onclick = function() {
 				window.location.href = "/" + Math.floor(Math.random() * Number.MAX_SAFE_INTEGER).toString(16);
@@ -162,10 +163,10 @@ const SideFeatures = {
 			ctx.fillStyle = 'green';
 			let frames = Math.random() * 30 + 15
 			for (let f = 0; f < frames; f++) {
-				let x = Math.random() * 180;
-				let y = Math.random() * 130;
-				let w = Math.random() * (180 - x);
-				let h = Math.random() * (130 - y);
+				let x = Math.random() * cw;
+				let y = Math.random() * ch;
+				let w = Math.random() * (cw - x);
+				let h = Math.random() * (ch - y);
 				ctx[f % 2 ? 'clearRect' : 'fillRect'](x, y, w, h);
 			}
 		}
@@ -193,19 +194,20 @@ const SideFeatures = {
 			}
 		}
 
-		let sides = [{
+		const sides = [{
 				elem: document.getElementById('right-side-features'),
 				cells: Math.ceil(list.length / 2)
 			}, {
 				elem: document.getElementById('left-side-features'),
 				cells: Math.floor(list.length / 2)
-		}];
-
+		}]
+		
 		sides.forEach(function(side) {
-			side.size = side.elem.getBoundingClientRect().height
+			side.size = side.elem.getBoundingClientRect().height;
 			side.csize = side.size / side.cells;
 		});
 
+		let curr = '';
 		list.forEach((feat, idx) => {
 			let side = sides[idx % 2];
 			let elem = document.createElement('div');
@@ -213,12 +215,56 @@ const SideFeatures = {
 			side.elem.appendChild(elem);
 			elem.style.top = (Math.random() * Math.max(side.csize - 150, 0)) + Math.floor(idx / 2) * side.csize + 'px';
 			this.features[feat](elem);
+			curr += feat + ', ';
 		});
+
+		this.current = curr.slice(0, -2);
 	}
 };
+
+const ConsoleFeature = {
+	place: function() {
+		if (Math.random() < 0.1) {
+			console.log('/etc/issue: No such file or directory');
+			return;
+		}
+
+		const r = Math.random;
+		const f = Math.floor;
+		const t = (n) => n.toFixed(2);
+		const a = /arm|aarch64|Apple M/i.test(navigator.platform) ? 'arm64' : 'x86_64';
+		const d = new Date().toUTCString();
+		const c = [HeaderFeature.current, SideFeatures.current, r() < 0.5 ? 'umm' : 'this?'];
+
+		console.log(`
+Ubuntu 24.04 LTS LAPTOP tty${f(r()*6+1)}
+
+LAPTOP login: root
+Password:
+Welcome to Ubuntu 24.04 LTS (GNU/Linux ${t(r()*5+1)}.0-${f(r()*30)}-generic ${a})
+
+ * Header feature:\t${c[0]}
+ * Side features:\t${c[1]}
+ * Console feature:\t${c[2]}
+
+System information as of ${d}
+
+ System load:\t\t${t(r()*0.6)}
+ Usage of /:\t\t${t(r()*40+40)}%
+ Memory usage:\t\t${t(r()*40+40)}%
+ Swap usage:\t\t0%
+ Processes:\t\t\t${f(r()*60+40)}
+ Users logged in:\t0
+
+${f(r()*99+1)} updates can be applied immediately.
+To see these additional updates run: apt list --upgradable
+		`.trim());
+	}
+}
 
 function placeAllFeatures() {
 	HeaderFeature.place();
 	SideFeatures.place();
+	ConsoleFeature.place();
 }
 
