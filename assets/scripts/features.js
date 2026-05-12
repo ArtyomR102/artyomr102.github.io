@@ -1,10 +1,18 @@
 const HeaderFeature = {
 	features: {
 		nurture: function(elem) {
-			elem.innerHTML = "I can make something good. <a href='https://youtu.be/PuMz4v5PYKc'>【=◈︿◈=】</a>" + elem.innerHTML.trim();
+			elem.innerHTML = `
+				I can make something good.
+				<a href="https://youtu.be/PuMz4v5PYKc">【=◈︿◈=】</a>
+			` + elem.innerHTML.trim();
 		},
 		code: function(elem) {
-			elem.innerHTML = "<span class='hljs-keyword'>while</span> (<span class='hljs-literal'>true</span>) <span class='hljs-built_in'>stay</span>(self); <span class='hljs-comment'>// &lt;3</span>" + elem.innerHTML.trim();
+			elem.innerHTML = `
+				<span class="hljs-keyword">while</span>
+				(<span class="hljs-literal">true</span>)
+				<span class='hljs-built_in'>stay</span>(self);
+				<span class="hljs-comment">// &lt;3</span>
+			` + elem.innerHTML.trim();
 		},
 		clock: function(elem) {
 			let blink = elem.innerHTML.trim();
@@ -17,35 +25,19 @@ const HeaderFeature = {
 		},
 		surprise: function(elem) {
 			let rickroll = function() {
-				let main = document.getElementsByTagName("main")[0];
-				main.innerHTML = "<img style='width: 100%; margin: 0;' src='/assets/images/rickroll.gif' onload='this.scrollIntoView({behavior: \"smooth\", block: \"center\"})' />";
+				let main = document.getElementsByTagName('main')[0];
+				main.innerHTML = '<img style="width: 100%; margin: 0;" src="/assets/images/rickroll.gif" onload="this.scrollIntoView({behavior: \"smooth\", block: \"center\"})" />';
 				main.style.padding = 0;
 			}
-			elem.innerHTML = "[ Advertising space (<a href='#'>click for details</a>) ]" + elem.innerHTML.trim();
-			elem.firstElementChild.addEventListener("click", rickroll);
+			elem.innerHTML = '[ Advertising space (<a href="#">click for details</a>) ]' + elem.innerHTML.trim();
+			elem.firstElementChild.addEventListener('click', rickroll);
 		},
 		deanon: function(elem) {
-			let blink = elem.innerHTML.trim();
-			elem.innerHTML = "Fetching..." + blink;
-			let promise = fetch("//ipinfo.io/json")
-				.then(response => {
-					if (!response.ok)
-						throw new Error(response.status);
-					return response.json();
-				})
-				.then(json => {
-					let loc = json.loc.split(",");
-					let str = json.ip + " / ";
-					str += json.country + ", " + json.region + ", " + json.city + " ";
-					str += json.postal.slice(0, -2) + "** / ";
-					str += loc[0].slice(0, -1) + "**, " + loc[1].slice(0, -1) + "**";
-				
-					elem.innerHTML = str + blink;
-				})
-				.catch(error => {
-					elem.style.color = "red";
-					elem.innerHTML = "Error: " + error.message + blink;
-				});
+			elem.innerHTML = `
+				This feature has been sacrificed in name of
+				<a href="/about/privacy">user privacy</a>.
+				R.I.P. 2025–2026
+			` + elem.innerHTML.trim();
 		},
 		animation: function(elem) {
 			const FRAMES = [
