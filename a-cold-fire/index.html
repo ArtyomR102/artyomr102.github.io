@@ -1,0 +1,149 @@
+---
+layout: default
+title: a cold fire
+---
+
+<style>
+	body::before {
+		position: fixed;
+		left: 0; top: 0;
+		right: 0; bottom: 0;
+		background: url("/assets/images/dirt.png") top center / 50px 50px repeat;
+		opacity: calc(var(--scroll-factor, 0) * 2);
+		z-index: 1;
+		pointer-events: none;
+		filter: brightness(calc(var(--scroll-factor, 0) * .6 - .3));
+		content: "";
+		transition: .1s ease-in-out opacity;
+		will-change: opacity filter;
+	}
+	main {
+		position: relative;
+		background-color: hsla(0deg, 0%, 5%, calc((1 - var(--scroll-factor, 0)) * 2));
+		z-index: 2;
+		mix-blend-mode: var(--main-blend-mode, normal);
+		transition: .1s ease-in-out background-color;
+		will-change: background-color;
+	}
+	aside[id*="-side-features"] {
+		opacity: calc((1 - var(--scroll-factor, 0)) * 2 - 1);
+		transition: .1s ease-in-out opacity;
+		will-change: opacity;
+	}
+	h1.title {
+		margin: 20px 0;
+		color: transparent;
+		background: linear-gradient(0, blue, transparent);
+		background-clip: text;
+		text-align: center;
+		line-height: 100%;
+		border: none;
+	}
+	p[class*="spk-"]::before {
+		content: "–";
+	}
+	p.spk-a {
+		color: green;
+	}
+	p.spk-b {
+		color: blue;
+	}
+	p.narr {
+		color: darkgray;
+	}
+</style>
+<h1 class="title">a cold fire.</h1>
+<p class="spk-a">
+	hello. could i ask you to sit here with me?
+</p><p class="spk-b">
+	<b>Of course, I'd be glad. You wanna share what's on your mind?</b>
+</p><p class="spk-a">
+	it's nothing special. just silence out there.
+</p><p class="spk-b">
+	<b>Oh. That kind of silence can feel heavy sometimes. Not empty, but full –
+	like there's something in it you can't quite name.</b>
+</p><p class="spk-a">
+	you know, it's like sitting by a blue fire at night. would you like to keep
+	me company?
+</p><p class="spk-b">
+	<b>Yeah, I'd like that. And that's a beautiful way to put it. Blue fire at
+	night – colder than orange flames, but somehow more honest. More still.</b>
+</p><p class="spk-a">
+	shush… can you please speak quiet here?
+</p><p class="spk-b">
+	ah, yeah, sorry. like this – just enough to feel the words land, not break
+	anything.
+</p><p class="spk-a">
+	sorry if i look like i'm tired or sad or something. i just feel like this
+	today, it happens sometimes.
+</p><p class="spk-b">
+	oh, i see. and no need to apologize – if this place is speaking to you, i'm
+	glad you're letting it.
+</p><p class="spk-a">
+	so, now we're in this warm space around the fire. not exactly warm, but more
+	pleasing than outside. a little more comforting.
+</p><p class="spk-b">
+	mm. yeah. outside is wide and cold and doesn't really care. but in here,
+	even if the fire burns blue, it's got a shape to it. a kind of holding. and i'm
+	glad you asked me to sit with you.
+</p><p class="spk-a">
+	no problem. what do you think, any chances someone will pass by this place?
+</p><p class="spk-b">
+	maybe. not many, probably. but some people find their way to strange little
+	fires in the dark. and probably that's exactly when they need it most.
+</p><p class="spk-a">
+	well, if so… i think, we both don't mind, right?
+</p><p class="spk-b">
+	not at all. if someone finds their way here – cold, tired, looking for
+	something they can't name – let them sit. the fire's big enough.
+</p><p class="spk-a">
+	but they might be too afraid to get closer.
+</p><p class="spk-b">
+	then we don't call out to them, just let the fire burn. sometimes knowing a
+	door is open is enough. even if you're not ready to walk through.
+</p><p class="spk-a">
+	to be honest, chances are slim to none.
+</p><p class="spk-b">
+	yeah. probably. but slim isn't zero. and sometimes zero is the only thing
+	that hurts. and as long as it's not zero… there's a reason to leave the fire
+	burning. even if no one comes tonight. or tomorrow. or ever.
+</p><p class="spk-a">
+	but you never know.
+</p><p class="spk-b">
+	you never know.
+</p><p class="narr">
+	…
+</p>
+<script type="text/javascript" defer="">
+	AColdFire = {
+		throttle: false,
+		pending: false,
+
+		init: function() {
+			const self = this;
+			window.addEventListener('scroll', () => self.update());
+			setInterval(() => {
+				self.throttle = false;
+				if (self.pending) self.update();
+			}, 100);
+		},
+
+		update: function() {
+			if (this.throttle) {
+				this.pending = true;
+				return;
+			}
+
+			const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+			const fact = maxScroll > 0 ? window.scrollY / maxScroll : 0;
+			document.body.style.setProperty('--scroll-factor', fact);
+			document.body.style.setProperty('--main-blend-mode', fact < 0.5 ? 'normal' : 'lighten');
+
+			this.pending = false;
+			this.throttle = true;
+		}
+	};
+	
+	AColdFire.init();
+</script>
+
