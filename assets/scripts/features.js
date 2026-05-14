@@ -84,9 +84,6 @@ const HeaderFeature = {
 
 const SideFeatures = {
 	features: {
-		rm: function(elem) {
-			elem.innerHTML = '<code style="">$ sudo rm -rf --no-preserve-root<blink>_</blink></code>';
-		},
 		clock: function(elem) {
 			elem.innerHTML = `
 				<svg width="120" height="120" viewBox="0 0 120 120">
@@ -169,6 +166,82 @@ const SideFeatures = {
 				let h = Math.random() * (ch - y);
 				ctx[f % 2 ? 'clearRect' : 'fillRect'](x, y, w, h);
 			}
+		},
+		delete: function(elem) {
+			elem.innerHTML = `
+				<code>
+					<span style="color: var(--frgr-header);"># </span>
+					<span contenteditable="true" spellcheck="false" style="
+						outline: none;
+						caret-shape: block;
+						caret-color: var(--frgr-link);
+					">sudo rm -rfv --no-preserve-root &</span>
+				</code>`;
+			
+			const span = elem.firstElementChild.lastElementChild;
+			span.addEventListener('beforeinput', (event) => {
+				event.preventDefault();
+			});
+
+			const path = function(elem) {
+				const path = [];
+				let current = elem;
+				while (current && current !== document.documentElement) {
+					const index = Array.from(current.parentNode.children).indexOf(current);
+					path.unshift(`${current.tagName.toLowerCase()}[${index}]`);
+					current = current.parentNode;
+				}
+				path.unshift('html');
+				return '/' + path.join('/');
+			}
+
+			const nuke = async function self(elem, mul = 1) {
+				const children = Array.from(elem.children);
+				await Promise.all(children.map(child => self(child, mul * children.length * 0.5)));
+				await new Promise(resolve => setTimeout(resolve, Math.random() * 300 * mul + 200));
+				console.log(`rm: removed '${path(elem)}'`);
+				elem.remove();
+			}
+
+			span.addEventListener('keydown', async (event) => {
+				if (event.key == 'Enter') {
+					span.setAttribute('contenteditable', false);
+					elem.firstElementChild.innerHTML += `
+						<br>[1] ${Math.floor(Math.random() * 10000 + 20000)}
+						<br><span style="color: var(--frgr-header);"># </span>
+					`;
+					await new Promise(resolve => setTimeout(resolve, 500));
+
+					await nuke(document.body);
+					console.log('kernel panic - not syncing: Attempted to kill init!');
+					document.documentElement.style.background = 'black';
+					await new Promise(resolve => setTimeout(resolve, 500));
+
+					document.documentElement.firstElementChild.innerHTML += `
+						<br>
+						<span>No bootable device</span>
+						<span>Please insert boot disk and reload the page</span>
+						<blink>_</blink>
+					`;
+
+					const sheet = new CSSStyleSheet();
+					sheet.replaceSync(`
+						* {
+							color: gray;
+							background: black;
+							font: var(--font-monospace) var(--size-regular);
+							user-select: none;
+						}
+						head, head > * {
+							display: block;
+						}
+						head > *::before {
+							content: attr(charset) attr(href) attr(src);
+						}
+					`);
+					document.adoptedStyleSheets = [...document.adoptedStyleSheets, sheet];
+				}
+			});
 		}
 	},
 
