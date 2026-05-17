@@ -1,0 +1,106 @@
+name: Build and Deploy
+
+on:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  get-branches:
+    runs-on: ubuntu-latest
+    outputs:
+      branches: ${{ steps.list.outputs.branches }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - id: list
+        run: |
+          branches=$(git branch -r | grep -v 'gh-pages\|HEAD' | sed 's/.*origin\///' | jq -R -s -c 'split("\n")[:-1]')
+          echo "branches=$branches" >> $GITHUB_OUTPUT
+          echo "Found branches: $branches"
+
+  build-branches:
+    needs: get-branches
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        branch: ${{ fromJSON(needs.get-branches.outputs.branches) }}
+      fail-fast: false
+      max-parallel: 4
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ matrix.branch }}
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'
+
+      - name: Build Jekyll
+        uses: actions/jekyll-build-pages@v1
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-${{ matrix.branch }}
+          path: _site
+          retention-days: 1
+
+  deploy:
+    needs: build-branches
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: site-*
+          path: artifacts
+          merge-multiple: false
+
+      - name: Merge into _deploy
+        run: |
+          mkdir -p _deploy/__dev
+          
+          cp -r artifacts/site-main/. _deploy/
+          
+          for dir in artifacts/site-*/; do
+            branch_name=$(basename "$dir" | sed 's/^site-//')
+            if [ "$branch_name" != "main" ]; then
+              echo "Adding branch: $branch_name"
+              mkdir -p "_deploy/__dev/$branch_name"
+              cp -r "$dir/." "_deploy/__dev/$branch_name/"
+            fi
+          done
+          
+      - name: Copy assets from dev branches to main assets
+        run: |
+          for dir in _deploy/__dev/*/; do
+            branch_name=$(basename "$dir")
+            if [ -d "$dir/assets" ]; then
+              echo "Copying assets from branch: $branch_name"
+              cp -rn "$dir/assets/." "_deploy/assets/"
+            fi
+          done
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./_deploy
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
