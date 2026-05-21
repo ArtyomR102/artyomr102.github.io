@@ -2,9 +2,26 @@
 <html lang="en">
 	<head>
 		<title>{{ page.title }} | {{ site.title }}</title>
-		<meta charset="UTF-8" />
+
+		<meta charset="UTF-8">
+		<meta name="description" content="{{ page.description | default: '' }}">
+		<meta name="author" content="ArtyomR_102">
+		<meta name="language" content="en">
+		
+		<meta property="og:title" content="{{ page.title }} | {{ site.title }}">
+		<meta property="og:description" content="{{ page.description | default: '' }}">
+		<meta property="og:image" content="{{ page.preview | default: '/assets/images/og-preview.png' | absolute_url }}">
+		<meta property="og:url" content="{{ page.url | absolute_url }}">
+		<meta property="og:type" content="website">
+
+		<meta name="theme-color" content="#00FF00">
+		<meta name="apple-mobile-web-app-status-bar-style" content="#00FF00">
+		<meta name="robots" content="noindex, nofollow">
+		<meta name="viewport" content="width=device-width, initial-scale=0.8">
+
 		<link rel="icon" href="/assets/favicon.ico" />
 		<link rel="stylesheet" href="/assets/styles/main.css" />
+
 		<script src="/assets/scripts/counter.js"></script>
 		<script src="/assets/scripts/features.js"></script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>

@@ -3,7 +3,7 @@ const HeaderFeature = {
 		nurture: function(elem) {
 			elem.innerHTML = `
 				I can make something good.
-				<a href="https://youtu.be/PuMz4v5PYKc">【=◈︿◈=】</a>
+				<a href="//youtu.be/PuMz4v5PYKc">【=◈︿◈=】</a>
 			` + elem.innerHTML.trim();
 		},
 		code: function(elem) {
