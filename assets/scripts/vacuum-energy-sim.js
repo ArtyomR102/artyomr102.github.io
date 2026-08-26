@@ -22,7 +22,6 @@ const VacuumEnergySim = {
 			this.e[y] = new Float32Array(this.width);
 		}
 		
-		// Зародыш истинного вакуума (энергия = 10)
 		let cx = Math.floor(this.width / 2);
 		let cy = Math.floor(this.height / 2);
 		this.e[cy][cx] = 1.0;
@@ -33,7 +32,7 @@ const VacuumEnergySim = {
 	tick: function() {
 		for (let x = 1; x < this.width - 1; x++) {
 			for (let y = 1; y < this.height - 1; y++) {
-				this.new[y][x] = Math.max(
+				this.e[y][x] = Math.max(
 					Math.ceil(this.e[y][x]),
 					Math.max(
 						this.e[y-1][x], this.e[y+1][x],
@@ -44,6 +43,7 @@ const VacuumEnergySim = {
 						this.e[y+1][x-1], this.e[y+1][x+1]
 					) - 0.707
 				);
+				
 				let idx = (y * this.width + x) * 4;
 				let color = this.pal[Math.floor(this.e[x][y]) % 8];
 				data[idx] = color[0];
