@@ -16,6 +16,7 @@ const VacuumEnergySim = {
 		this.width = this.canvas.width;
 		this.height = this.canvas.height;
 		this.img = this.ctx.createImageData(this.width, this.height);
+		this.data = this.img.data
 		
 		this.e = [];
 		for (let y = 0; y < this.height; y++) {
@@ -43,7 +44,7 @@ const VacuumEnergySim = {
 						this.e[y+1][x-1], this.e[y+1][x+1]
 					) - 0.707
 				);
-				
+
 				let idx = (y * this.width + x) * 4;
 				let color = this.pal[Math.floor(this.e[x][y]) % 8];
 				data[idx] = color[0];
